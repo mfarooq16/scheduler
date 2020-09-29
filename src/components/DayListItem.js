@@ -29,5 +29,3 @@ export default function DayListItem(props) {
     </li>
   );
 }
-
-//We know that this component takes in three attributes (name, spots, selected) and one action (setDay) as props, so we'll need to update our DayListItem component to reflect this after building our stories.
