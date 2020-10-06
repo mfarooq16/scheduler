@@ -10,6 +10,7 @@ import Button from "components/Button";
 export default function Form(props) {
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
+  const [error, setError] = useState("");
 
   function reset() {
     setName("");
@@ -19,6 +20,14 @@ export default function Form(props) {
   function cancel() {
     reset();
     return props.onCancel();
+  }
+
+  function validate() {
+    if (name === "") {
+      setError("Student name cannot be blank");
+      return;
+    }
+    props.onSave(name, interviewer);
   }
 
   return (
@@ -36,7 +45,9 @@ export default function Form(props) {
             /*
               This must be a controlled component
             */
+            data-testid="student-name-input"
           />
+          <section className="appointment__validation">{error}</section>
         </form>
         <InterviewerList
           interviewers={props.interviewers}
@@ -47,11 +58,7 @@ export default function Form(props) {
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={cancel}>Cancel</Button>
-          <Button confirm onClick={() => {
-							interviewer
-								? props.onSave(name, interviewer)
-								: alert('You must select an interviewer!');
-						}}>Save</Button>
+          <Button confirm onClick={validate} confirm>Save</Button>
         </section>
       </section>
     </main>
