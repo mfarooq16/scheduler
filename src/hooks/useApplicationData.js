@@ -12,6 +12,14 @@ export default function useApplicationData() {
   });
   const setDay = day => setState({ ...state, day });
 
+  function spotsRemaining(count) {
+    const day = state.days.find((d)=> d.name === state.day)
+    day.spots += count;
+    const dayID = day.id;
+    const days = [...state.days]
+    days[dayID] = day;
+  }
+
   function bookInterview(id, interview) {
     console.log(id, interview);
     const appointment = {
@@ -27,6 +35,7 @@ export default function useApplicationData() {
       appointments
     });*/
 
+    spotsRemaining(-1)
     return axios.put(`/api/appointments/${id}`, { interview })
     .then((response) => {
       setState({
@@ -45,6 +54,8 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
+
+    spotsRemaining(1)
     return axios
       .delete(`http://localhost:8001/api/appointments/${id}`)
       .then(() => axios.get("http://localhost:8001/api/days"))
