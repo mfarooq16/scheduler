@@ -36,13 +36,14 @@ export default function useApplicationData() {
     });*/
 
     spotsRemaining(-1)
-    return axios.put(`/api/appointments/${id}`, { interview })
-    .then((response) => {
-      setState({
-        ...state,
-        appointments
-      });
-    });   
+    return axios
+      .put(`/api/appointments/${id}`, { interview })
+      .then((response) => {
+        setState({
+          ...state,
+          appointments
+        });
+      });   
   }
 
   function cancelInterview(id) {
