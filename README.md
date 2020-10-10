@@ -21,3 +21,9 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## Final Product
+
+!["Screenshot of Interview Scheduler - Main page"](https://github.com/mfarooq16/scheduler/blob/master/docs/interview-scheduler-home.jpg)
+!["Screenshot of Interview Scheduler - Add an appointment"](https://github.com/mfarooq16/scheduler/blob/master/docs/interview-scheduler-add.jpg)
+!["Screenshot of Interview Scheduler - Delete an appointment"](https://github.com/mfarooq16/scheduler/blob/master/docs/interview-scheduler-delete.jpg)
